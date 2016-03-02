@@ -1,0 +1,40 @@
+Design
+
+The Rhyme application is written in Python using the Flask framework.  It will store rhyming words and will return rhyming words on demand.  It support enumeration of the rhyming words and allows for adding removing from its data store.  
+
+The datastore uses a dictionary to store the rhyming words.  The key of the dictionary is the base word.  The value for the key is a list of all words rhyming with the base word.
+
+Additionally, in order to support the Next and Remove commands, a secondary dictionary is used to store state information for each user.  When a user begin a new search using the Rhyme command, the dictionary stores the users current word and index current word they are viewing.  When the next search is performed, the index is incremented and the next word is retrieved from the list.
+
+The initial request handler performs the initial command parsing (see rhyme.py). Each command was handle by the Rhymer class (rhymer.py)
+
+The milestones were:
+
+- Milestone1 : Setting up the (dev) server so that it was externally accessible.
+- Milestone2 : Connected the TextMark to the endpoints.  APIs were then verified.
+- Milestone3 : Basic api parsing complete.  Each of the commands were parsed and a class created to handing each command.  Once this was done, I could focus on each command, test.  
+
+Unit Testing
+
+The unit tests verified app functionality (see rhymer_unittest.py) and were used throughout development of the Rhyme application.
+
+Schedule
+
+One crucial design desicion involved the definition of “rhyme”.  In particular, the question I had was whether relationships of rhyming words is transitive.  For instance, given A rhymes with B and B rhymes with C.  Does it follow that A rhymes with C?  If the answer is YES, then that would change the complexity of the problem.  A single key/value (rhyme word list) would no longer be possible.  Rather than a one-to-many relationship, it would be a many-to-many relationship, requiring the use of a much more complex data store and additional time on the schedule.
+
+I had found a couple of solutions (MongoDB and Redis) that appeared to be could solutions.  Both could scale well.  Redis in particular supportted Set datatypes.  That would have allowed me to treat rhyming words as being transitive.  I would then have to enumerate each set to find which set the word belonged.  Unforetunately,  I had difficulty getting them properly set up and did not have enough time to flush out the solution.  Mongo no doubt would be able to handle this kind of structure, but, again, time was running short.   As a compromise, I implemented a simple datastore using standard dictionaries.  It allowed me to get the system up and running much more quickly.  No object persistence is supported, but adding it should be do-able given addition time on the schedule.
+
+The decision to assume rhymes we're NOT transitive made it possible to have a completed/running project by the end of the schedule.  It is what I would consider a Minimum Viable Product (MVP).  This gets the system up and running in front of users quickly.  Early feedback makes it to possible to incorporate enhancement and fix any errors quickly.  And by wrapping the primary logic inside of the Rhyming class means that the rest of the system be minmally affected when a new datastore is implemented.
+
+Additional things that could/should be incorporated, would be using Fabric for server setup and deployment.  
+
+Overall, the project took much longer than I anticipated.  Still, given that I have not worked in Python/general web development for almost couple of years, it was a fun project to work on.  
+
+
+
+
+
+Gene Dahilig
+Tuesday, Mar 01, 2016
+
+

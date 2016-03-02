@@ -1,0 +1,8 @@
+scaling.txt
+
+In order for the Rhyming app to scale properly, I would recommend replacing the current datastore with something more robust.  The current implementation does not make efficient use of memory.   And at some point, memory usage will grow past safe limits.  
+
+In my experience, Amazon's AWS has both the tools (ie. databases, load balancers, Back solutions), can scale both horizontally and vertically.  For instance, if a particular EC2 instance is not performing well enough, you can scale it vertically by easily upgrading it to with more ram and/or cpu projecssing power. If number of requests are just too many for the server to handle, you can scale it horizontally by creating addional servers and use a load balancer to manange server utilization.  What is nice about Amazon's service is that you can start small work your way up as needed.
+
+Gene Dahilig
+Tuesday, Mar 01, 2016
