@@ -16,7 +16,23 @@ The milestones were:
 
 Unit Testing
 
-The unit tests verified app functionality (see rhymer_unittest.py) and were used throughout development of the Rhyme application.
+The unit tests verified app functionality (see rhymer_unittest.py) and were used throughout development of the Rhyme application.  Tests were written for each of the commands, verify both the values returned and the state of the datastore
+	Get command
+		Test valid rhyming word exists.
+		Test non-existent rhyming word.
+	Learn command
+		Test word successfully added to datastore.
+		Test learning pre-existing 
+	Next command
+		Test next word
+		Test next word until no more words in the list.
+		Test next word when no initial word was requested (i.e. outside GET)
+	Remove command
+		Test simple remove word
+		Test remove during a series of next.
+		Test removing all words in a rhyming list.
+	Help command
+		Test help when no command is used.
 
 Schedule
 

@@ -89,7 +89,7 @@ class TestRhymer(unittest.TestCase):
 	# test remove all items in the rhyme list.
 	# 'phone': ['bone', 'loan']
 	# note: key is removed when list is empty.
-	def test_Remove_2(self):
+	def test_Remove_3(self):
 		s = self.rhymer.get('+18188881234','phone')
 		self.assertEqual(s, 'bone rhymes with phone')
 		s = self.rhymer.remove('+18188881234')
